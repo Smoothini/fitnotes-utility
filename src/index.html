@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FitNotes Utility | Bulk CSV & SQLite Merger</title>
+    <meta name="title" content="FitNotes Utility | Bulk CSV & SQLite Merger">
+    <meta name="description" content="A 100% private, browser-based tool to bulk import CSV data and text into your FitNotes SQLite database. No uploads, total privacy.">
+
+    <meta name="keywords" content="FitNotes, SQLite, CSV import, workout log, database merger, fitness data">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-github-io-link.com/">
+    <meta property="og:title" content="FitNotes Utility - Privacy-First Data Merger">
+    <meta property="og:description" content="Modify your FitNotes database locally in your browser. No server, no data leaks.">
+    <meta property="og:image" content="screenshot.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="FitNotes Utility">
+    <meta property="twitter:description" content="Bulk import workout measurements to FitNotes via SQLite.">
+    <meta property="twitter:image" content="res/screenshot.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="res/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="info-box">
+            <strong>FitNotes Utility</strong><br>
+            This tool is specifically designed for the <a href="https://www.fitnotesapp.com/" target="_blank">FitNotes</a> app,
+            which I've happily used for years and can wholeheartedly recommend. It is <strong>not</strong> affiliated with the app's developers.
+            Always ensure you have a backup of your original <code>.fitnotes</code> file before importing changes!!
+        </div>
+        <h2>Bulk insert new weight values into a FitNotes database</h2>
+
+        
+        <label>1. Select a backup FitNotes database (.db, .sqlite, .fitnotes)</label>
+        <input type="file" id="dbFile" accept=".db,.sqlite,.fitnotes">
+
+        <div id="recentEntriesPreview"></div>
+
+        <section class="input-section">
+            <label>2. Select a data input method</label>
+            <p class="sub-header"><strong>Values only:</strong> 1 weight value per line, optionally followed by a comment. Dot for decimals (e.g 75.35)<br>
+            <strong>Manual:</strong> 1 set of Date, [Time], Value, [Comment] per line. Separate values with commas, tabs, or spaces.<br>
+            Time defaults to 09:00:00 if not provided and comment is optional.<br>
+            Supported date formats: YYYY-MM-DD or DD/MM/YYYY
+            </p>
+            <select id="inputMode" onchange="updatePreview()">
+                <option value="auto">Values only (Auto-increment Date based on last entry, Constant 9:00 AM log time, [Comment])</option>
+                <option value="manual">Manual (Date, [Time], Value, [Comment])</option>
+            </select>
+            
+            <textarea id="textInput" placeholder="Enter data..." rows="6" oninput="updatePreview()"></textarea>
+            <div id="dataPreview" class="preview-box"></div>
+        </section>
+
+        <div class="controls">
+            <button class="btn-primary" onclick="processAndZip()">Merge & Download ZIP (Original + Altered + Log)</button>
+            <button class="btn-secondary" onclick="exportAlteredOnly()">Merge & Download Altered DB Only</button>
+            
+            <label>Process Log</label>
+            <div id="logArea" class="log-container"></div>
+            
+            <button class="btn-reset" onclick="resetPage()">Start Over / New File</button>
+        </div>
+        <footer>
+            <p class="sub-header">
+                🔒 <strong>Local Processing:</strong> All operations happen in your browser's memory. 
+                No data is ever uploaded anywhere, and the app also works offline. Feel free to <a href="https://github.com/your-repo" target="_blank">check the source code</a>
+                or verify the network activity to confirm. Again, <strong>keep a backup of your original file before making changes!!</strong>
+            </p>
+            &copy; 2026 FitNotes Utility | 
+            <a href="https://github.com/Smoothini/fitnotes-utility" target="_blank">View source code on GitHub</a>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

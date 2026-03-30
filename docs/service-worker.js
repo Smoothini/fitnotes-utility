@@ -1,7 +1,7 @@
 // service-worker.js
 
 // 1. Define a unique cache name and the files to cache
-const CACHE_NAME = 'fitnotes-utility-v1.0';
+const CACHE_NAME = 'fitnotes-utility-v1.1';
 const ASSETS_TO_CACHE = [
   '/', // Cache the root path
   '/index.html',

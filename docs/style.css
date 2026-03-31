@@ -5,6 +5,7 @@ body {
     padding: 20px; 
     color: #333; 
     line-height: 1.5;
+    margin: 0;
 }
 
 .container { 
@@ -16,7 +17,7 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
 }
 
-/* Info Box & Warnings */
+/* Info Box & Sub-header */
 .info-box {
     background: #fff3cd;
     border: 1px solid #ffeeba;
@@ -27,7 +28,15 @@ body {
     font-size: 0.9em;
 }
 
-.warning { color: #d9534f; font-weight: bold; }
+.sub-header {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.sub-header a { color: #007bff; text-decoration: none; font-weight: 500; }
 
 /* Forms & Inputs */
 label { display: block; margin-top: 20px; font-weight: 600; margin-bottom: 8px; }
@@ -38,7 +47,7 @@ textarea, select, input {
     border: 1px solid #ccc; 
     border-radius: 6px; 
     box-sizing: border-box; 
-    font-size: 14px;
+    font-size: 14px; /* Standard desktop size */
 }
 
 .preview-box { 
@@ -67,34 +76,23 @@ button {
     cursor: pointer; 
     transition: opacity 0.2s;
 }
-
 button:hover { opacity: 0.9; }
 
 .btn-primary { background: #28a745; color: white; }
 .btn-secondary { background: #17a2b8; color: white; }
-.btn-reset { 
-    background: #6c757d; 
-    color: white; 
-    font-size: 0.85em; 
-    margin-top: 15px; 
-}
+.btn-reset { background: #6c757d; color: white; font-size: 0.85em; margin-top: 15px; }
 
-/* Tables */
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    margin: 15px 0; 
-    font-size: 0.85em; 
-}
-
+/* Responsive Table */
+.table-wrapper { width: 100%; overflow-x: auto; margin: 15px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85em; min-width: 400px; }
 th, td { border: 1px solid #eee; padding: 10px; text-align: left; }
 th { background-color: #f1f1f1; }
 
 /* Process Log Area */
 .log-container {
-    height: 120px;
+    height: 150px;
     overflow-y: auto;
-    background: #1e1e1e; /* Kept dark for contrast */
+    background: #1e1e1e;
     color: #00ff00;
     padding: 10px;
     font-family: 'Courier New', monospace;
@@ -102,7 +100,6 @@ th { background-color: #f1f1f1; }
     border-radius: 4px;
     margin-top: 5px;
 }
-
 .log-error { color: #ff5f5f; }
 .log-success { color: #75ff75; }
 .log-info { color: #00d4ff; }
@@ -116,24 +113,17 @@ footer {
     border-top: 1px solid #eee;
     padding-top: 15px;
 }
-
 footer a { color: #007bff; text-decoration: none; }
 
-.sub-header {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: -10px; /* Pulls it closer to the H2 */
-    margin-bottom: 25px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.sub-header a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.sub-header a:hover {
-    text-decoration: underline;
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px; border-radius: 8px; }
+    
+    /* Bigger tap targets for mobile thumbs */
+    textarea, select, input { font-size: 16px; padding: 14px; }
+    button { padding: 16px; font-size: 1.1em; }
+    
+    .sub-header { font-size: 0.8em; }
+    .info-box { font-size: 0.85em; padding: 10px; }
 }

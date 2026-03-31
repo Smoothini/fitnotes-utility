@@ -224,7 +224,7 @@ function finalizeSession() {
     determineLastDate();
     showRecentEntries();
     // Keep textInput if user wants to double-check, or clear it:
-    // document.getElementById('textInput').value = '';
+    document.getElementById('textInput').value = '';
     updatePreview();
     addToLog("Files packaged successfully.", "info");
 }

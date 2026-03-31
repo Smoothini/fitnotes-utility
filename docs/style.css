@@ -116,14 +116,56 @@ footer {
 footer a { color: #007bff; text-decoration: none; }
 
 /* --- MOBILE OPTIMIZATION --- */
+/* --- Add this to your existing CSS or replace the @media block --- */
+
 @media (max-width: 600px) {
-    body { padding: 10px; }
-    .container { padding: 15px; border-radius: 8px; }
-    
-    /* Bigger tap targets for mobile thumbs */
-    textarea, select, input { font-size: 16px; padding: 14px; }
-    button { padding: 16px; font-size: 1.1em; }
-    
-    .sub-header { font-size: 0.8em; }
-    .info-box { font-size: 0.85em; padding: 10px; }
+    body { 
+        padding: 0; /* Remove body padding to use full screen width */
+        background: #fff; /* Match container for a seamless app look */
+    }
+
+    .container { 
+        width: 100%;
+        max-width: 100%;
+        padding: 15px; 
+        border-radius: 0; /* Square edges look better on full-width mobile */
+        box-shadow: none;
+    }
+
+    /* Make text readable without squinting */
+    h2 { font-size: 1.5rem; margin-top: 10px; }
+    .sub-header, .info-box { font-size: 0.95rem; line-height: 1.4; }
+
+    /* Jumbo Inputs for Mobile */
+    textarea, select, input { 
+        font-size: 16px !important; /* Forces browser to not zoom in */
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 2px solid #ddd; /* Thicker borders are easier to see */
+    }
+
+    /* Massive Thumb-Friendly Buttons */
+    button { 
+        padding: 18px; 
+        font-size: 1.1rem; 
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    /* Expand the Log for visibility */
+    .log-container {
+        height: 200px; /* Taller log for mobile scrolling */
+        font-size: 0.9rem;
+    }
+
+    /* Ensure labels stand out */
+    label {
+        font-size: 1.1rem;
+        margin-top: 25px;
+        color: #000;
+    }
+
+    footer {
+        padding: 20px 10px 40px 10px; /* Extra bottom padding for mobile home bars */
+    }
 }
